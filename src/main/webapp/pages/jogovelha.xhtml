@@ -17,96 +17,107 @@
 	</h:head>
 
 	<h:body>
-		<div class="container">
-			<div class="row">
-				<div class="col l4">
-					<div class="card">
-						<div class="card-content center">
-							<span class="card-title">
-								<h:outputText value="Informe os Jogadores" />
-							</span>
-							<h:form>
+		<h:form id="formPlayers" prependId="false">
+			<div class="container">
+				<div class="row">
+					<div class="col l4">
+						<div class="card">
+							<div class="card-content center">
+								<span class="card-title">
+									<h:outputText value="Informe os Jogadores" />
+								</span>
 								<div class="input-field">
 									<span class="fa fa-circle-o prefix"></span>
-									<h:inputText id="player1" value="" />
+									<h:inputText id="player1" value="#{jogoVelhaBean.jogador1}">
+										<f:ajax execute="player1 player2" render="submitPlayers" />
+									</h:inputText>
 									<h:outputLabel for="player1" value="Jogador 1" />
 								</div>
 								<div class="input-field">
 									<span class="fa fa-times prefix"></span>
-									<h:inputText id="player2" value="" />
+									<h:inputText id="player2" value="#{jogoVelhaBean.jogador2}">
+										<f:ajax execute="player1 player2" render="submitPlayers" />
+									</h:inputText>
 									<h:outputLabel for="player2" value="Jogador 2" />
 								</div>
-								<h:commandButton styleClass="btn" value="Novo Jogo" />
-							</h:form>
+								<h:commandLink id="submitPlayers"
+									styleClass="waves-effect waves-light btn #{jogoVelhaBean.disableButtonSubmit() ? 'disabled' : ''}"
+									action="#{jogoVelhaBean.newGame()}" value="Novo Jogo"
+									disabled="#{jogoVelhaBean.disableButtonSubmit()}">
+									<f:ajax execute="player1 player2" render="cardGame" />
+								</h:commandLink>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col l8">
-					<div class="card">
-						<div class="card-content">
-							<p>
-								<h:outputText value="É a vez do jogador 1" />
-							</p>
-							<table>
-								<tbody>
-									<tr>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-										<td>
-											<div class="card center">
-												<span class="fa fa-circle-o fa-5x"></span>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+					<div class="col l8">
+						<div class="card">
+							<h:panelGroup styleClass="card-content" id="cardGame" layout="block">
+								<h:panelGroup layout="block" rendered="#{not empty jogoVelhaBean.jogadorAtual}">
+									<h:outputText value="É a vez de " />
+									<h:outputText styleClass="orange-text" value="#{jogoVelhaBean.jogadorAtual}" />
+									<h:outputText value=" jogar" />
+								</h:panelGroup>
+								<table>
+									<tbody>
+										<tr>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+											<td>
+												<div class="card center">
+													<span class="fa fa-circle-o fa-5x"></span>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</h:panelGroup>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</h:form>
 
 		<!-- jQuery v2.1.1 -->
 		<h:outputScript library="jquery" name="jquery-2.1.1.min.js" />
