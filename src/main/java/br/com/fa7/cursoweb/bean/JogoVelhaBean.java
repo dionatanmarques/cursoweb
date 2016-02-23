@@ -10,6 +10,7 @@ public class JogoVelhaBean {
 	private String jogador1;
 	private String jogador2;
 	private String jogadorAtual;
+	private boolean gameStarted;
 
 	/**
 	 * Verifica se o botão de novo jogo deve ser habilitado
@@ -22,6 +23,7 @@ public class JogoVelhaBean {
 	}
 
 	public void newGame() {
+		setGameStarted(true);
 		setJogadorAtual(jogador1);
 	}
 
@@ -47,5 +49,13 @@ public class JogoVelhaBean {
 
 	public void setJogadorAtual(String jogadorAtual) {
 		this.jogadorAtual = jogadorAtual;
+	}
+
+	public boolean isGameStarted() {
+		return gameStarted;
+	}
+
+	public void setGameStarted(boolean gameStarted) {
+		this.gameStarted = gameStarted;
 	}
 }

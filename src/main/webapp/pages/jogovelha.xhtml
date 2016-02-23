@@ -28,23 +28,24 @@
 								</span>
 								<div class="input-field">
 									<span class="fa fa-circle-o prefix"></span>
-									<h:inputText id="player1" value="#{jogoVelhaBean.jogador1}">
+									<h:inputText id="player1" value="#{jogoVelhaBean.jogador1}" disabled="#{jogoVelhaBean.gameStarted}">
 										<f:ajax execute="player1 player2" render="submitPlayers" />
 									</h:inputText>
 									<h:outputLabel for="player1" value="Jogador 1" />
 								</div>
 								<div class="input-field">
 									<span class="fa fa-times prefix"></span>
-									<h:inputText id="player2" value="#{jogoVelhaBean.jogador2}">
+									<h:inputText id="player2" value="#{jogoVelhaBean.jogador2}" disabled="#{jogoVelhaBean.gameStarted}">
 										<f:ajax execute="player1 player2" render="submitPlayers" />
 									</h:inputText>
 									<h:outputLabel for="player2" value="Jogador 2" />
 								</div>
 								<h:commandLink id="submitPlayers"
-									styleClass="waves-effect waves-light btn #{jogoVelhaBean.disableButtonSubmit() ? 'disabled' : ''}"
+									styleClass="waves-effect waves-light btn
+										#{jogoVelhaBean.disableButtonSubmit() or jogoVelhaBean.gameStarted ? 'disabled' : ''}"
 									action="#{jogoVelhaBean.newGame()}" value="Novo Jogo"
-									disabled="#{jogoVelhaBean.disableButtonSubmit()}">
-									<f:ajax execute="player1 player2" render="cardGame" />
+									disabled="#{jogoVelhaBean.disableButtonSubmit() or jogoVelhaBean.gameStarted}">
+									<f:ajax execute="player1 player2" render="cardGame player1 player2 submitPlayers" />
 								</h:commandLink>
 							</div>
 						</div>
