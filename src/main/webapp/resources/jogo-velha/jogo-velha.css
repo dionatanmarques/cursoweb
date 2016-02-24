@@ -1,0 +1,19 @@
+.game .card {
+	min-width: 100px;
+	max-width: 100px;
+	min-height: 80px;
+	max-height: 80px;
+	margin: 0 auto;
+}
+
+.game .card div {
+	width: 100%;
+}
+
+.label-message {
+	margin-bottom: 20px;
+}
+
+.bold {
+	font-weight: bold;
+}

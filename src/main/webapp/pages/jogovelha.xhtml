@@ -14,9 +14,12 @@
 
 		<!-- Materialize v0.97.5 -->
 		<h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+
+		<!-- Jogo da Velha -->
+		<h:outputStylesheet library="jogo-velha" name="jogo-velha.css" />
 	</h:head>
 
-	<h:body>
+	<h:body styleClass="teal lighten-2">
 		<h:form id="formPlayers" prependId="false">
 			<div class="container">
 				<div class="row">
@@ -27,18 +30,16 @@
 									<h:outputText value="Informe os Jogadores" />
 								</span>
 								<div class="input-field">
-									<span class="fa fa-circle-o prefix"></span>
+									<span class="fa fa-circle-o prefix blue-text"></span>
 									<h:inputText id="player1" value="#{jogoVelhaBean.jogador1}" disabled="#{jogoVelhaBean.gameStarted}">
 										<f:ajax execute="player1 player2" render="submitPlayers" />
 									</h:inputText>
-									<h:outputLabel for="player1" value="Jogador 1" />
 								</div>
 								<div class="input-field">
-									<span class="fa fa-times prefix"></span>
+									<span class="fa fa-times prefix red-text"></span>
 									<h:inputText id="player2" value="#{jogoVelhaBean.jogador2}" disabled="#{jogoVelhaBean.gameStarted}">
 										<f:ajax execute="player1 player2" render="submitPlayers" />
 									</h:inputText>
-									<h:outputLabel for="player2" value="Jogador 2" />
 								</div>
 								<h:commandLink id="submitPlayers"
 									styleClass="waves-effect waves-light btn
@@ -53,66 +54,114 @@
 					<div class="col l8">
 						<div class="card">
 							<h:panelGroup styleClass="card-content" id="cardGame" layout="block">
-								<h:panelGroup layout="block" rendered="#{not empty jogoVelhaBean.jogadorAtual}">
-									<h:outputText value="É a vez de " />
-									<h:outputText styleClass="orange-text" value="#{jogoVelhaBean.jogadorAtual}" />
-									<h:outputText value=" jogar" />
-								</h:panelGroup>
-								<table>
-									<tbody>
-										<tr>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-											<td>
-												<div class="card center">
-													<span class="fa fa-circle-o fa-5x"></span>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+								<div class="label-message">
+									<h:outputText value="#{jogoVelhaBean.message}" escape="false" />
+								</div>
+								<div class="row game">
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(0, 0)}"
+													disabled="#{jogoVelhaBean.disableField(0, 0)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(0, 0)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(0, 1)}"
+													disabled="#{jogoVelhaBean.disableField(0, 1)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(0, 1)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(0, 2)}"
+													disabled="#{jogoVelhaBean.disableField(0, 2)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(0, 2)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row game">
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(1, 0)}"
+													disabled="#{jogoVelhaBean.disableField(1, 0)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(1, 0)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(1, 1)}"
+													disabled="#{jogoVelhaBean.disableField(1, 1)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(1, 1)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(1, 2)}"
+													disabled="#{jogoVelhaBean.disableField(1, 2)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(1, 2)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row game">
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(2, 0)}"
+													disabled="#{jogoVelhaBean.disableField(2, 0)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(2, 0)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(2, 1)}"
+													disabled="#{jogoVelhaBean.disableField(2, 1)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(2, 1)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+									<div class="col l4">
+										<div class="card valign-wrapper">
+											<div class="center">
+												<h:commandLink action="#{jogoVelhaBean.selectField(2, 2)}"
+													disabled="#{jogoVelhaBean.disableField(2, 2)}">
+													<h:outputText value="#{jogoVelhaBean.getFieldValue(2, 2)}" escape="false" />
+													<f:ajax render="cardGame formPlayers" />
+												</h:commandLink>
+											</div>
+										</div>
+									</div>
+								</div>
 							</h:panelGroup>
 						</div>
 					</div>
