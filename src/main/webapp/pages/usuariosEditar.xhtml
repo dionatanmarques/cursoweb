@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><h:outputText
+			value="#{msg['page.usuariosEditar.title']}" /></title>
+	<!-- Font Awesome 4.3.0 -->
+	<h:outputStylesheet library="font-awesome"
+		name="css/font-awesome.min.css" />
+
+	<!-- Materialize v0.97.5 -->
+	<h:outputStylesheet library="materialize"
+		name="css/materialize.min.css" />
+</h:head>
+<h:body styleClass="teal lighten-2">
+	<div class="row">
+		<h:form styleClass="col s12" id="usuarioForm">
+			<div class="card-panel white">
+				<div class="card-content">
+					<div class="row">
+						<div class="input-field col s4">
+							<h:inputHidden value="#{usuarioBean.usuario.id}" />
+							<h:inputText styleClass="validate" id="idInput" value="#{usuarioBean.usuario.id}"
+								disabled="true" />
+							<h:outputLabel for="idInput"
+								value="#{msg['page.usuarios.label.id']}:" />
+						</div>
+						<div class="input-field col s4">
+							<h:inputText styleClass="validate" id="cpfInput" value="#{usuarioBean.usuario.cpf}"
+							converter="converters.CpfConverter" validator="validators.CpfValidator" />
+							<h:outputLabel for="cpfInput"
+								value="#{msg['page.usuarios.label.cpf']}:" />
+						</div>
+						<div class="input-field col s4">
+							<h:inputText styleClass="validate" id="nomeReduzidoInput"
+								value="#{usuarioBean.usuario.nomeReduzido}" />
+							<h:outputLabel for="nomeReduzidoInput"
+								value="#{msg['page.usuarios.label.nomeReduzido']}:" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<h:inputTextarea styleClass="materialize-textarea"
+								id="nomeCompletoInput"
+								value="#{usuarioBean.usuario.nomeCompleto}" rows="5" cols="20" />
+							<h:outputLabel for="nomeCompletoInput"
+								value="#{msg['page.usuarios.label.nomeCompleto']}:" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<h:inputText styleClass="validate" id="emailInput" value="#{usuarioBean.usuario.email}" />
+							<h:outputLabel for="emailInput"
+								value="#{msg['page.usuarios.label.email']}:" />
+						</div>
+						<div class="input-field col s6">
+							<h:inputText styleClass="validate" id="senhaInput" value="#{usuarioBean.usuario.senha}" />
+							<h:outputLabel for="senhaInput"
+								value="#{msg['page.usuarios.label.senha']}:" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s12">
+							<h:commandButton styleClass="waves-effect waves-green btn"
+								action="#{usuarioBean.salvar}" value="#{msg['commons.salvar']}" />
+							<h:commandButton styleClass="waves-effect waves-green btn"
+								action="usuarios" value="#{msg['commons.voltar']}" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</div>
+	<!-- jQuery v2.1.1 -->
+	<h:outputScript library="jquery" name="jquery-2.1.1.min.js" />
+
+	<!-- Materialize v0.97.5 -->
+	<h:outputScript library="materialize" name="js/materialize.min.js" />
+</h:body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title><h:outputText value="#{msg['page.index.title']}" /></title>
+
+	<!-- Font Awesome 4.3.0 -->
+	<h:outputStylesheet library="font-awesome"
+		name="css/font-awesome.min.css" />
+
+	<!-- Materialize v0.97.5 -->
+	<h:outputStylesheet library="materialize"
+		name="css/materialize.min.css" />
+</h:head>
+
+<h:body styleClass="teal lighten-2">
+	<div class="collection">
+		<a href="usuarios.xhtml" class="collection-item">
+			<h:outputText value="#{msg['page.usuarios.title']}"/>
+		</a>
+		 <a href="jogovelha.xhtml" class="collection-item">Jogo da Velha</a>
+		 <a href="#!" class="collection-item">Alvin</a>
+		 <a href="#!" class="collection-item">Alvin</a>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title><h:outputText value="#{msg['page.usuarios.title']}" />
+	</title>
+
+	<!-- Font Awesome 4.3.0 -->
+	<h:outputStylesheet library="font-awesome"
+		name="css/font-awesome.min.css" />
+
+	<!-- Materialize v0.97.5 -->
+	<h:outputStylesheet library="materialize"
+		name="css/materialize.min.css" />
+</h:head>
+<h:body styleClass="teal lighten-2">
+	<h:form>
+		<div class="row">
+			<div class="col l12">
+				<div class="card">
+					<div class="card-content center">
+						<h:dataTable styleClass="striped"
+							value="#{usuarioBean.listaUsuarios}" var="usuario">
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msg['page.usuarios.label.cpf']}" />
+								</f:facet>
+								<h:commandLink action="usuariosEditar.xhtml">
+									<h:outputText value="#{usuario.cpf}" converter="converters.CpfConverter" />
+									<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+										value="#{usuario}" />
+								</h:commandLink>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText
+										value="#{msg['page.usuarios.label.nomeReduzido']}" />
+								</f:facet>
+								<h:outputText value="#{usuario.nomeReduzido}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msg['page.usuarios.label.email']}" />
+								</f:facet>
+								<h:outputText value="#{usuario.email}" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText
+										value="#{msg['page.usuarios.label.dataNascimento']}"/>
+								</f:facet>
+								<h:outputText value="#{usuario.dataNascimento}">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+								</h:outputText>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msg['commons.excluir']}" />
+								</f:facet>
+								<h:commandButton styleClass="waves-effect waves-green btn" 
+								action="#{usuarioBean.excluir}"
+									value="#{msg['commons.excluir']}">
+									<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+										value="#{usuario}" />
+								</h:commandButton>
+							</h:column>
+						</h:dataTable>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col l4">
+				<h:commandButton styleClass="waves-effect waves-green btn"
+					action="#{usuarioBean.novo}" value="#{msg['commons.novo']}" />
+				<h:commandButton styleClass="waves-effect waves-green btn"
+					action="index.xhtml" value="#{msg['commons.voltar']}" />
+			</div>
+		</div>
+		<!-- jQuery v2.1.1 -->
+	<h:outputScript library="jquery" name="jquery-2.1.1.min.js" />
+
+	<!-- Materialize v0.97.5 -->
+	<h:outputScript library="materialize" name="js/materialize.min.js" />
+	</h:form>
+</h:body>
+</html>
