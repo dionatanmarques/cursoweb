@@ -183,7 +183,9 @@
 			</div>
 			<div class="row">
 				<div class="col l4">
-					<h:commandButton styleClass="waves-effect waves-green btn" action="index.xhtml" value="#{msg['commons.voltar']}" />
+					<a class="waves-effect waves-red red btn" href="#{request.contextPath}/pages/index.xhtml">
+						<h:outputText value="#{msg['commons.voltar']}" />
+					</a>
 				</div>
 			</div>
 		</div>

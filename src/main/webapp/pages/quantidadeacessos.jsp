@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,6 +41,13 @@
 							</table>
 						</div>
 					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col l4">
+					<a class="waves-effect waves-red red btn" href="${pageContext.request.contextPath}/pages/index.xhtml">
+						Voltar
+					</a>
 				</div>
 			</div>
 		</div>

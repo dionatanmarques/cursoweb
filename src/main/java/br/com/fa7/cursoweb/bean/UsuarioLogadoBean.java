@@ -17,7 +17,7 @@ import br.com.fa7.cursoweb.model.Usuario;
 public class UsuarioLogadoBean implements Serializable {
 
 	private static final long serialVersionUID = -2505438864756384720L;
-	
+
 	@ManagedProperty("#{usuarioBusiness}")
 	private UsuarioBusiness usuarioBusiness;
 	private Usuario usuario;
@@ -51,13 +51,22 @@ public class UsuarioLogadoBean implements Serializable {
 	public String autenticarUsuario() {
 		try {
 			usuario = usuarioBusiness.autenticarUsuario(cpf, senha);
-			return "pages/jogovelha.xhtml";
+			return "pages/index.xhtml?faces-redirect=true";
 		} catch (UsuarioInvalidoException e) {
-			FacesContext.getCurrentInstance().addMessage(
-					"msg",
-					new FacesMessage(FacesMessage.SEVERITY_ERROR, e
-							.getMessage(), null));
+			FacesContext.getCurrentInstance().addMessage("msg", new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 			return null;
 		}
+	}
+
+	public UsuarioBusiness getUsuarioBusiness() {
+		return usuarioBusiness;
+	}
+
+	public void setUsuarioBusiness(UsuarioBusiness usuarioBusiness) {
+		this.usuarioBusiness = usuarioBusiness;
+	}
+
+	public boolean isLogged() {
+		return this.usuario != null;
 	}
 }

@@ -4,28 +4,40 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<h:head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title><h:outputText value="#{msg['page.index.title']}" /></title>
+		<title><h:outputText value="#{msg['page.index.title']}" /></title>
 
-	<!-- Font Awesome 4.3.0 -->
-	<h:outputStylesheet library="font-awesome"
-		name="css/font-awesome.min.css" />
+		<!-- Font Awesome 4.3.0 -->
+		<h:outputStylesheet library="font-awesome" name="css/font-awesome.min.css" />
 
-	<!-- Materialize v0.97.5 -->
-	<h:outputStylesheet library="materialize"
-		name="css/materialize.min.css" />
-</h:head>
+		<!-- Materialize v0.97.5 -->
+		<h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+	</h:head>
 
-<h:body styleClass="teal lighten-2">
-	<div class="collection">
-		<a href="usuarios.xhtml" class="collection-item">
-			<h:outputText value="#{msg['page.usuarios.title']}"/>
-		</a>
-		 <a href="jogovelha.xhtml" class="collection-item">Jogo da Velha</a>
-		 <a href="#!" class="collection-item">Alvin</a>
-		 <a href="#!" class="collection-item">Alvin</a>
-	</div>
-</h:body>
+	<h:body styleClass="teal lighten-2">
+		<nav>
+			<div class="red nav-wrapper">
+				<a href="#" class="brand-logo">Curso Web</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li>
+						<a href="#{request.contextPath}/pages/jogovelha.xhtml">
+							Jogo da Velha
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/pages/quantidadeacessos.jsp">
+							Quantidade de Acessos
+						</a>
+					</li>
+					<li>
+						<a href="#{request.contextPath}/pages/usuarios.xhtml">
+							<h:outputText value="#{msg['page.usuarios.title']}" />
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</h:body>
 </html>
