@@ -69,4 +69,9 @@ public class UsuarioLogadoBean implements Serializable {
 	public boolean isLogged() {
 		return this.usuario != null;
 	}
+
+	public String logout() {
+		this.usuario = null;
+		return "/login.xhtml?faces-redirect=true";
+	}
 }
