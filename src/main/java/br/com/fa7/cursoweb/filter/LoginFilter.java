@@ -31,6 +31,7 @@ public class LoginFilter implements Filter {
 		if (usuarioLogado != null && usuarioLogado.isLogged()) {
 			chain.doFilter(request, response);
 		} else {
+			System.err.println("Usuario não possui credenciais!!");
 			redirectToLogin(res, req);
 		}
 	}

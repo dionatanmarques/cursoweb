@@ -41,6 +41,13 @@
 							<h:column>
 								<f:facet name="header">
 									<h:outputText
+										value="#{msg['page.usuarios.label.cep']}" />
+								</f:facet>
+								<h:outputText value="#{usuario.cep}" converter="converters.CepConverter" />
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText
 										value="#{msg['page.usuarios.label.nomeReduzido']}" />
 								</f:facet>
 								<h:outputText value="#{usuario.nomeReduzido}" />

@@ -8,10 +8,12 @@
 	<title><h:outputText
 			value="#{msg['page.usuariosEditar.title']}" /></title>
 	<!-- Font Awesome 4.3.0 -->
-	<h:outputStylesheet library="font-awesome" name="css/font-awesome.min.css" />
+	<h:outputStylesheet library="font-awesome"
+		name="css/font-awesome.min.css" />
 
 	<!-- Materialize v0.97.5 -->
-	<h:outputStylesheet library="materialize" name="css/materialize.min.css" />
+	<h:outputStylesheet library="materialize"
+		name="css/materialize.min.css" />
 </h:head>
 <h:body styleClass="teal lighten-2">
 	<div class="row">
@@ -19,20 +21,37 @@
 			<div class="card-panel white">
 				<div class="card-content">
 					<div class="row">
-						<div class="input-field col s4">
+						<div class="input-field col 12">
+							<h:messages globalOnly="true" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
 							<h:inputHidden value="#{usuarioBean.usuario.id}" />
-							<h:inputText styleClass="validate" id="idInput" value="#{usuarioBean.usuario.id}"
-								disabled="true" />
+							<h:inputText styleClass="validate" id="idInput"
+								value="#{usuarioBean.usuario.id}" disabled="true" />
 							<h:outputLabel for="idInput"
 								value="#{msg['page.usuarios.label.id']}:" />
 						</div>
-						<div class="input-field col s4">
-							<h:inputText styleClass="validate" id="cpfInput" value="#{usuarioBean.usuario.cpf}"
-							converter="converters.CpfConverter" validator="validators.CpfValidator" />
+						<div class="input-field col s6">
+							<h:inputText styleClass="validate" id="cpfInput"
+								value="#{usuarioBean.usuario.cpf}"
+								converter="converters.CpfConverter"
+								validator="validators.CpfValidator" />
 							<h:outputLabel for="cpfInput"
 								value="#{msg['page.usuarios.label.cpf']}:" />
 						</div>
-						<div class="input-field col s4">
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<h:inputText styleClass="validate" id="cepInput"
+								value="#{usuarioBean.usuario.cep}"
+								converter="converters.CepConverter"
+								validator="validators.CepValidator" />
+							<h:outputLabel for="cepInput"
+								value="#{msg['page.usuarios.label.cep']}:" />
+						</div>
+						<div class="input-field col s6">
 							<h:inputText styleClass="validate" id="nomeReduzidoInput"
 								value="#{usuarioBean.usuario.nomeReduzido}" />
 							<h:outputLabel for="nomeReduzidoInput"
@@ -41,8 +60,7 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12">
-							<h:inputText
-								id="nomeCompletoInput"
+							<h:inputText id="nomeCompletoInput"
 								value="#{usuarioBean.usuario.nomeCompleto}" />
 							<h:outputLabel for="nomeCompletoInput"
 								value="#{msg['page.usuarios.label.nomeCompleto']}:" />
@@ -50,12 +68,14 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
-							<h:inputText styleClass="validate" id="emailInput" value="#{usuarioBean.usuario.email}" />
+							<h:inputText styleClass="validate" id="emailInput"
+								value="#{usuarioBean.usuario.email}" />
 							<h:outputLabel for="emailInput"
 								value="#{msg['page.usuarios.label.email']}:" />
 						</div>
 						<div class="input-field col s6">
-							<h:inputText styleClass="validate" id="senhaInput" value="#{usuarioBean.usuario.senha}" />
+							<h:inputText styleClass="validate" id="senhaInput"
+								value="#{usuarioBean.usuario.senha}" />
 							<h:outputLabel for="senhaInput"
 								value="#{msg['page.usuarios.label.senha']}:" />
 						</div>
@@ -66,8 +86,9 @@
 								action="#{usuarioBean.salvar}" value="#{msg['commons.salvar']}" />
 						</div>
 						<div class="col l2">
-							<a class="waves-effect waves-red red btn" href="#{request.contextPath}/pages/usuarios.xhtml">
-								<h:outputText value="#{msg['page.usuarios.title']}" />
+							<a class="waves-effect waves-red red btn"
+								href="#{request.contextPath}/pages/usuarios.xhtml"> <h:outputText
+									value="#{msg['page.usuarios.title']}" />
 							</a>
 						</div>
 					</div>

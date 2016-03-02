@@ -39,6 +39,11 @@ public class Usuario extends BaseModel implements Serializable {
      * Data de nascimento.
      */
     private Date dataNascimento;
+    
+    /**
+     * cep.
+     */
+    private Cep cep; 
 
     public String getNomeReduzido() {
         return nomeReduzido;
@@ -88,7 +93,15 @@ public class Usuario extends BaseModel implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public Usuario() {
+    public Cep getCep() {
+		return cep;
+	}
+
+	public void setCep(Cep cep) {
+		this.cep = cep;
+	}
+
+	public Usuario() {
         super();
     }
 
