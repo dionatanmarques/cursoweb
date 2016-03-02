@@ -20,26 +20,26 @@
 		<h:form>
 			<nav>
 				<div class="red nav-wrapper">
-					<a href="#" class="brand-logo">Curso Web</a>
+					<a href="#" class="brand-logo"><h:outputText value="#{msg['application.name']}"/></a>
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li>
 							<a href="#{request.contextPath}/pages/jogovelha.xhtml">
-								Jogo da Velha
+								<h:outputText value="#{msg['menu.label.jogo']}"/>
 							</a>
 						</li>
 						<li>
 							<a href="#{request.contextPath}/pages/quantidadeacessos.jsp">
-								Quantidade de Acessos
+								<h:outputText value="#{msg['menu.label.acesso']}"/>
 							</a>
 						</li>
 						<li>
 							<a href="#{request.contextPath}/pages/usuarios.xhtml">
-								<h:outputText value="#{msg['page.usuarios.title']}" />
+								<h:outputText value="#{msg['menu.label.usuario']}" />
 							</a>
 						</li>
 						<li>
 							<h:commandLink action="#{usuarioLogadoBean.logout}">
-								<h:outputText value="Sair" />
+								<h:outputText value="#{msg['menu.label.sair']}" />
 							</h:commandLink>
 						</li>
 					</ul>

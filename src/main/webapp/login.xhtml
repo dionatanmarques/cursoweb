@@ -7,7 +7,7 @@
 	<h:head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title>Login | Curso Web</title>
+		<title><h:outputText value="#{msg['page.login.title']}"/></title>
 
 		<!-- Font Awesome 4.3.0 -->
 		<h:outputStylesheet library="font-awesome" name="css/font-awesome.min.css" />
@@ -24,7 +24,7 @@
 						<div class="card">
 							<div class="card-content center">
 								<span class="card-title">
-									<h:outputText value="Acesso ao Sistema" />
+									<h:outputText value="#{msg['page.login.label.title']}" />
 								</span>
 								<h:messages styleClass="red white-text" />
 								<div class="input-field">
@@ -37,7 +37,7 @@
 								</div>
 								<h:commandButton 
 									styleClass="waves-effect waves-light btn red"
-									action="#{usuarioLogadoBean.autenticarUsuario}" value="Entrar" />
+									action="#{usuarioLogadoBean.autenticarUsuario}" value="#{msg['page.login.label.entrar']}" />
 							</div>
 						</div>
 					</div>

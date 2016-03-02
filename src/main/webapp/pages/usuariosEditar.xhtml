@@ -78,6 +78,9 @@
 								value="#{usuarioBean.usuario.senha}" />
 							<h:outputLabel for="senhaInput"
 								value="#{msg['page.usuarios.label.senha']}:" />
+								<h:inputHidden value="#{usuarioBean.usuario.dataNascimento}">
+									<f:converter converterId="javax.faces.DateTime"/>
+								</h:inputHidden>
 						</div>
 					</div>
 					<div class="row">

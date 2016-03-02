@@ -7,7 +7,7 @@
 <h:head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title>Jogo da Velha | Curso Web</title>
+	<title><h:outputText value="#{msg['page.jogovelha.title']}"/></title>
 
 	<!-- Font Awesome 4.3.0 -->
 	<h:outputStylesheet library="font-awesome"
@@ -29,7 +29,7 @@
 					<div class="card">
 						<div class="card-content center">
 							<span class="card-title"> <h:outputText
-									value="Informe os Jogadores" />
+									value="#{msg['page.jogovelha.jogadores']}" />
 							</span>
 							<div class="input-field">
 								<span class="fa fa-circle-o prefix blue-text"></span>
@@ -48,7 +48,7 @@
 							<h:commandLink id="submitPlayers"
 								styleClass="waves-effect waves-light btn
 										#{jogoVelhaBean.disableButtonSubmit() or jogoVelhaBean.gameStarted ? 'disabled' : ''}"
-								action="#{jogoVelhaBean.newGame()}" value="Novo Jogo"
+								action="#{jogoVelhaBean.newGame()}" value="#{msg['page.jogovelha.label.novoJogo']}"
 								disabled="#{jogoVelhaBean.disableButtonSubmit() or jogoVelhaBean.gameStarted}">
 								<f:ajax execute="player1 player2"
 									render="cardGame player1 player2 submitPlayers" />
