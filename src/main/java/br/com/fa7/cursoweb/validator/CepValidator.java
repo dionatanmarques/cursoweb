@@ -14,16 +14,21 @@ public class CepValidator implements Validator {
 
 	public void validate(FacesContext context, UIComponent component,
 			Object value) throws ValidatorException {
-		if (value != null) {
+		if (value != null && !"".equals(value)) {
 			Cep cep = (Cep)value;
 			if (cep.getRegiao().length() != 5 || cep.getSufixo().length() != 3) {
-				FacesMessage message = new FacesMessage();
-				message.setSeverity(FacesMessage.SEVERITY_ERROR);
-				message.setSummary("Erro de Validação");
-				message.setDetail("CEP Inválido");
-				throw new ValidatorException(message);
+				throwException();
 			}
-		}		
+		} else {
+			throwException();
+		}
 	}
 
+	private void throwException() {
+		FacesMessage message = new FacesMessage();
+		message.setSeverity(FacesMessage.SEVERITY_ERROR);
+		message.setSummary("Erro de Validação");
+		message.setDetail("CEP Inválido");
+		throw new ValidatorException(message);
+	}
 }

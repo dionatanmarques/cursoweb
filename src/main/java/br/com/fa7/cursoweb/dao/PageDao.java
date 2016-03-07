@@ -19,6 +19,8 @@ public class PageDao {
 		pages.put("jogovelha.xhtml", 0);
 		pages.put("usuarios.xhtml", 0);
 		pages.put("index.xhtml", 0);
+		pages.put("usuariosEditar.xhtml", 0);
+		pages.put("login.xhtml", 0);
 	}
 
 	public boolean existsPage(String page) {

@@ -59,11 +59,19 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="input-field col s12">
+						<div class="input-field col s6">
 							<h:inputText id="nomeCompletoInput"
 								value="#{usuarioBean.usuario.nomeCompleto}" />
 							<h:outputLabel for="nomeCompletoInput"
 								value="#{msg['page.usuarios.label.nomeCompleto']}:" />
+						</div>
+						<div class="input-field col s6">
+							<h:inputText id="dataNascimentoUsuario"
+								value="#{usuarioBean.usuario.dataNascimento}">
+								<f:convertDateTime pattern="dd/MM/yyyy"/>
+							</h:inputText>
+							<h:outputLabel for="dataNascimentoInput"
+								value="#{msg['page.usuarios.label.dataNascimento']}:" />
 						</div>
 					</div>
 					<div class="row">
@@ -78,9 +86,6 @@
 								value="#{usuarioBean.usuario.senha}" />
 							<h:outputLabel for="senhaInput"
 								value="#{msg['page.usuarios.label.senha']}:" />
-								<h:inputHidden value="#{usuarioBean.usuario.dataNascimento}">
-									<f:converter converterId="javax.faces.DateTime"/>
-								</h:inputHidden>
 						</div>
 					</div>
 					<div class="row">
